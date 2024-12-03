@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import '../models/wallet.dart';
-import '../models/transaction.dart';
+import '../entities/wallet.dart';
+import '../entities/transaction.dart';
 
 class WalletRepository {
   final Dio _dio;

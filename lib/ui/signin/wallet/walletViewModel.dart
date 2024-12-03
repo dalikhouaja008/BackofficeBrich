@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class WalletsViewModel with ChangeNotifier {
   List<Wallet> _wallets = [];
@@ -10,7 +11,7 @@ class WalletsViewModel with ChangeNotifier {
   double get totalBalance => _totalBalance;
 
   void fetchWallets() {
-    // Simuler les données (ajoutez votre API ou logique ici)
+    // Simulate the data (add your API or logic here)
     _wallets = [
       Wallet(walletName: 'US Dollar', balance: 500.0, user: 'John Doe'),
       Wallet(walletName: 'Euro', balance: 300.0, user: 'Jane Doe'),
