@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:brichbackoffice/data/entities/user.dart'; // Assurez-vous d'importer votre modèle User
+// Assurez-vous d'importer votre modèle User
 
 class SigninRepository {
   final Dio _dio = Dio();

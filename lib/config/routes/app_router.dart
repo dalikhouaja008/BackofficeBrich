@@ -11,7 +11,7 @@ abstract class AppRoutes {
   static List<GetPage> pages = [
     GetPage(
       name: loginPage,
-      page: () => LoginPage(),
+      page: () => const LoginPage(),
       binding: BindingsBuilder(() {
         Get.lazyPut<SigninRepository>(() => SigninRepository());
         Get.lazyPut<AuthViewModel>(() => AuthViewModel(Get.find<SigninRepository>()));
