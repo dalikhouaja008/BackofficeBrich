@@ -7,7 +7,7 @@ class WalletRepository {
 
   WalletRepository(this._dio);
 
-  // Fetch wallets
+  /// Fetch the list of wallets from the backend
   Future<List<Wallet>> fetchWallets() async {
     try {
       final response = await _dio.get('/wallets'); // Replace with your endpoint
@@ -22,7 +22,7 @@ class WalletRepository {
     }
   }
 
-  // Fetch recent transactions
+  /// Fetch recent transactions
   Future<List<Transaction>> fetchRecentTransactions() async {
     try {
       final response = await _dio.get('/transactions/recent'); // Replace with your endpoint
@@ -37,7 +37,7 @@ class WalletRepository {
     }
   }
 
-  // Fetch transactions by wallet ID
+  /// Fetch transactions by wallet ID
   Future<List<Transaction>> fetchWalletTransactions(String walletId) async {
     try {
       final response = await _dio.get('/wallets/$walletId/transactions'); // Replace with your endpoint
