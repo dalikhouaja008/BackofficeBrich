@@ -1,3 +1,4 @@
+import 'package:brichbackoffice/config/routes/app_router.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -108,7 +109,7 @@ class AdminDashboardScreen extends GetView<Mainscreenviewmodel> {
         _drawerItem(Icons.analytics, 'Analytics', () {}),
         _drawerItem(Icons.supervised_user_circle_sharp, 'Users', () {}),
         _drawerItem(Icons.wallet, 'Wallets', () {}),
-        _drawerItem(Icons.currency_exchange, 'Conversions', () {}),
+        _drawerItem(Icons.currency_exchange, 'Conversions', () {Get.toNamed(AppRoutes.conversions);}),
         _drawerItem(Icons.settings, 'Settings', () {}),
         _drawerItem(Icons.logout, 'Log out', () => controller.logout()),
       ],
