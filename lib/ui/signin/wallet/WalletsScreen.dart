@@ -1,3 +1,4 @@
+import 'package:brichbackoffice/ui/signin/wallet/walletViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +14,7 @@ class WalletsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               "Total Balance",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),

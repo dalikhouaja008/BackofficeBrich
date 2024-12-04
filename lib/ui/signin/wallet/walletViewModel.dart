@@ -1,3 +1,5 @@
+import 'package:brichbackoffice/data/entities/transaction.dart';
+import 'package:brichbackoffice/data/entities/wallet.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
