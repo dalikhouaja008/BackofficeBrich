@@ -1,3 +1,4 @@
+import 'package:brichbackoffice/config/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:brichbackoffice/ui/signin/signinViewModel.dart';
@@ -151,7 +152,7 @@ class _LoginPageState extends State<LoginPage> {
                           onPressed: () {
                             _validateInputs();
                             if (_emailError.isEmpty && _passwordError.isEmpty) {
-                              // Save remember me preference if checked
+                              Get.toNamed(AppRoutes.dashboardPage);
                               if (_rememberMe) {
                                 // Implement saving credentials securely
                               }
