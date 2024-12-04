@@ -4,7 +4,10 @@ import 'package:get/get.dart';
 
 class DependencyInjection {
   static Future<void> init() async {
+
     Get.lazyPut<SigninRepository>(() => SigninRepository());
+    
     Get.lazyPut<AuthViewModel>(() => AuthViewModel(Get.find<SigninRepository>()));
+
   }
 }
