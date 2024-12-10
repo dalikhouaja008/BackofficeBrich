@@ -1,14 +1,12 @@
-import 'package:brichbackoffice/ui/signin/wallet/walletViewModel.dart';
+import 'package:brichbackoffice/ui/wallet/walletViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:brichbackoffice/ui/signin/wallet/walletViewModel.dart';
+
 class WalletsScreen extends StatelessWidget {
   const WalletsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<WalletsViewModel>(context, listen: false);
-
     return Scaffold(
       backgroundColor: Colors.blue[50],
       appBar: AppBar(
@@ -23,7 +21,7 @@ class WalletsScreen extends StatelessWidget {
               "Total Balance",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            Consumer<WalletsViewModel>(
+            Consumer<WalletsViewModel>( // Use Consumer to access the WalletsViewModel
               builder: (context, vm, child) {
                 if (vm.errorMessage.isNotEmpty) {
                   return Text(
@@ -104,8 +102,8 @@ class WalletsScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          viewModel.fetchWallets();
-          viewModel.fetchRecentTransactions();
+          context.read<WalletsViewModel>().fetchWallets();
+          context.read<WalletsViewModel>().fetchRecentTransactions();
         },
         child: const Icon(Icons.refresh),
       ),

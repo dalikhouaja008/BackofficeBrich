@@ -3,7 +3,6 @@ import 'package:brichbackoffice/data/entities/wallet.dart';
 import 'package:brichbackoffice/data/repositories/WalletRepository.dart';
 import 'package:flutter/material.dart';
 
-
 class WalletsViewModel with ChangeNotifier {
   final WalletRepository _repository;
 
