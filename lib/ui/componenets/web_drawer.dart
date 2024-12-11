@@ -3,6 +3,7 @@ import 'package:brichbackoffice/ui/mainScreen/mainScreenViewModel.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 class WebDrawer extends StatelessWidget {
   const WebDrawer({super.key});
 
@@ -43,8 +44,8 @@ class WebDrawer extends StatelessWidget {
           _drawerItem(Icons.supervised_user_circle_sharp, 'Users', () {}),
           _drawerItem(Icons.wallet, 'Wallets', () => Get.toNamed(AppRoutes.walletPage)),
           _drawerItem(
-            Icons.currency_exchange, 
-            'Conversions', 
+            Icons.currency_exchange,
+            'Conversions',
             () => Get.toNamed(AppRoutes.conversions)
           ),
           _drawerItem(Icons.settings, 'Settings', () {}),

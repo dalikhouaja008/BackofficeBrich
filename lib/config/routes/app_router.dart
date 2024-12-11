@@ -42,11 +42,12 @@ abstract class AppRoutes {
       page: () => const ConversionsScreen(),
     ),
 
-    // Wallet Page
+    // Wallet Page (Updated to navigate properly)
     GetPage(
       name: walletPage,
       page: () => const WalletsScreen(),
       binding: BindingsBuilder(() {
+        Get.lazyPut<WalletsViewModel>(() => WalletsViewModel(Get.find<WalletRepository>()));
       }),
     ),
   ];

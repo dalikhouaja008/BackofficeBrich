@@ -1,48 +1,68 @@
 import 'package:brichbackoffice/data/entities/transaction.dart';
 import 'package:brichbackoffice/data/entities/wallet.dart';
 import 'package:brichbackoffice/data/repositories/WalletRepository.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class WalletsViewModel with ChangeNotifier {
-  final WalletRepository _repository;
+class WalletsViewModel extends ChangeNotifier {
+  final WalletRepository walletRepository;
+  List<Wallet> wallets = [];
+  List<Transaction> recentTransactions = [];
+  double totalBalance = 0.0;
+  String errorMessage = '';
+  String _searchQuery = '';
 
-  WalletsViewModel(this._repository);
+  WalletsViewModel(this.walletRepository);
 
-  List<Wallet> _wallets = [];
-  List<Transaction> _recentTransactions = [];
-  double _totalBalance = 0.0;
-  String _errorMessage = '';
+  String get searchQuery => _searchQuery;
 
-  List<Wallet> get wallets => _wallets;
-  List<Transaction> get recentTransactions => _recentTransactions;
-  double get totalBalance => _totalBalance;
-  String get errorMessage => _errorMessage;
-
-  /// Fetch all wallets and calculate total balance
+  /// Fonction pour récupérer tous les portefeuilles
   Future<void> fetchWallets() async {
     try {
-      _errorMessage = '';
-      _wallets = await _repository.fetchWallets();
+      wallets = await walletRepository.fetchWallets();
       _calculateTotalBalance();
+      errorMessage = '';
     } catch (e) {
-      _errorMessage = 'Failed to fetch wallets: $e';
+      errorMessage = 'Erreur lors de la récupération des portefeuilles: $e';
     }
     notifyListeners();
   }
 
-  /// Fetch recent transactions
+  /// Fonction pour récupérer les transactions récentes
   Future<void> fetchRecentTransactions() async {
     try {
-      _errorMessage = '';
-      _recentTransactions = await _repository.fetchRecentTransactions();
+      recentTransactions = await walletRepository.fetchRecentTransactions();
+      errorMessage = '';
     } catch (e) {
-      _errorMessage = 'Failed to fetch recent transactions: $e';
+      errorMessage = 'Erreur lors de la récupération des transactions récentes: $e';
     }
     notifyListeners();
   }
 
-  /// Calculate the total balance from wallets
+  /// Fonction pour calculer le total des soldes des portefeuilles
   void _calculateTotalBalance() {
-    _totalBalance = _wallets.fold(0, (sum, wallet) => sum + wallet.balance);
+    totalBalance = wallets.fold(0.0, (sum, wallet) => sum + wallet.balance);
+  }
+
+  /// Met à jour la requête de recherche et filtre les portefeuilles
+  void setSearchQuery(String query) {
+    _searchQuery = query;
+    _filterWallets();
+    notifyListeners();
+  }
+
+  /// Filtrage des portefeuilles en fonction de la recherche
+  void _filterWallets() {
+    if (_searchQuery.isEmpty) {
+      fetchWallets(); // Recharger tous les portefeuilles si aucune recherche
+    } else {
+      // Filtrer les portefeuilles
+      wallets = wallets
+          .where((wallet) =>
+              wallet.walletName.toLowerCase().contains(_searchQuery.toLowerCase()))
+          .toList();
+    }
+    notifyListeners(); // Notifier les changements après le filtrage
   }
 }
