@@ -1,4 +1,5 @@
 import 'package:brichbackoffice/config/routes/app_router.dart';
+import 'package:brichbackoffice/ui/user/userViewModel.dart';
 import 'package:flutter/material.dart';
 import 'package:brichbackoffice/injection/injection_container.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -17,6 +18,7 @@ void main() async {
         ChangeNotifierProvider(
           create: (_) => WalletsViewModel(WalletRepository(Dio())),
         ),
+        ChangeNotifierProvider(create: (_) => UserViewModel()),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

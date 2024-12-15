@@ -2,6 +2,8 @@ import 'package:brichbackoffice/data/repositories/SigninRepository.dart';
 import 'package:brichbackoffice/ui/Conversions/conversionView.dart';
 import 'package:brichbackoffice/ui/mainScreen/mainScreenViewModel.dart';
 import 'package:brichbackoffice/ui/mainScreen/main_screen.dart';
+import 'package:brichbackoffice/ui/user/userViewModel.dart';
+import 'package:brichbackoffice/ui/user/usersPage.dart';
 import 'package:brichbackoffice/ui/wallet/walletViewModel.dart';
 import 'package:get/get.dart';
 import 'package:brichbackoffice/ui/signin/signinView.dart';
@@ -15,6 +17,7 @@ abstract class AppRoutes {
   static const String dashboardPage = '/dashboard';
   static const String conversions = '/conversions';
   static const String walletPage = '/wallet';
+  static const String usersPage = '/users';
 
   static List<GetPage> pages = [
     // Login Page
@@ -50,5 +53,12 @@ abstract class AppRoutes {
         Get.lazyPut<WalletsViewModel>(() => WalletsViewModel(Get.find<WalletRepository>()));
       }),
     ),
+
+GetPage(
+  name: usersPage, 
+  page: () => const UsersPage(),
+  binding: BindingsBuilder(() {
+    Get.lazyPut<UserViewModel>(() => UserViewModel());
+  }),)
   ];
 }

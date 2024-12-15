@@ -41,7 +41,8 @@ class WebDrawer extends StatelessWidget {
           ),
           _drawerItem(Icons.dashboard, 'Dashboard', () {}),
           _drawerItem(Icons.analytics, 'Analytics', () {}),
-          _drawerItem(Icons.supervised_user_circle_sharp, 'Users', () {}),
+          //_drawerItem(Icons.supervised_user_circle_sharp, 'Users', () {}),
+          _drawerItem(Icons.supervised_user_circle_sharp, 'Users', () => Get.toNamed(AppRoutes.usersPage)),
           _drawerItem(Icons.wallet, 'Wallets', () => Get.toNamed(AppRoutes.walletPage)),
           _drawerItem(
             Icons.currency_exchange,
