@@ -10,7 +10,8 @@ abstract class AppRoutes {
   static const String mainPage = '/';
   static const String loginPage = '/login';
   static const String dashboardPage = '/dashboard';
-   static const String conversions = '/conversions';
+  static const String conversions = '/conversions';
+
 
   static List<GetPage> pages = [
     GetPage(
