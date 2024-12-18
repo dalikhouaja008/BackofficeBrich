@@ -35,8 +35,9 @@ class UserWalletsPage extends StatelessWidget {
               itemBuilder: (context, index) {
                 final wallet = wallets[index];
                 return ListTile(
-                  title: Text(wallet['name'] ?? 'Nom non défini'),
-                  subtitle: Text('Solde: ${wallet['balance'] ?? 0}'),
+                  leading: const Icon(Icons.account_balance_wallet),
+                  title: Text(wallet.walletName),
+                  subtitle: Text('Solde: ${wallet.balance.toStringAsFixed(4)}'),
                 );
               },
             );

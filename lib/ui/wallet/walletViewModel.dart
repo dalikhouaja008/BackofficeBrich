@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class WalletsViewModel extends ChangeNotifier {
+  final Dio _dio = Dio(BaseOptions(baseUrl: "http://localhost:3000"));
+
   final WalletRepository walletRepository;
   List<Wallet> wallets = [];
   List<Transaction> recentTransactions = [];
@@ -64,5 +66,27 @@ class WalletsViewModel extends ChangeNotifier {
           .toList();
     }
     notifyListeners(); // Notifier les changements après le filtrage
+  }
+
+
+
+  Future<List<Wallet>> fetchUserWallets(int userId) async {
+    final response = await _dio.get("/wallets/user/$userId");
+    if (response.statusCode == 200) {
+      return (response.data as List).map((e) => Wallet.fromJson(e)).toList();
+    } else {
+      throw Exception("Failed to load wallets");
+    }
+  }
+
+  Future<List<Transaction>> fetchWalletTransactions(int walletId) async {
+    final response = await _dio.get("/wallets/$walletId/transactions");
+    if (response.statusCode == 200) {
+      return (response.data as List)
+          .map((e) => Transaction.fromJson(e))
+          .toList();
+    } else {
+      throw Exception("Failed to load transactions");
+    }
   }
 }

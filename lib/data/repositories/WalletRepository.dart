@@ -7,10 +7,10 @@ class WalletRepository {
 
   WalletRepository(this._dio);
 
-  /// Fetch the list of wallets from the backend
+  /// Fetch all wallets
   Future<List<Wallet>> fetchWallets() async {
     try {
-      final response = await _dio.get('/wallets'); // Remplacez par votre endpoint
+      final response = await _dio.get('/wallets'); // Endpoint correct
       if (response.statusCode == 200) {
         final List<dynamic> data = response.data as List<dynamic>;
         return data.map((json) => Wallet.fromJson(json)).toList();
@@ -25,7 +25,7 @@ class WalletRepository {
   /// Fetch recent transactions
   Future<List<Transaction>> fetchRecentTransactions() async {
     try {
-      final response = await _dio.get('/transactions/recent'); // Remplacez par votre endpoint
+      final response = await _dio.get('/transactions/recent'); // Endpoint correct
       if (response.statusCode == 200) {
         final List<dynamic> data = response.data as List<dynamic>;
         return data.map((json) => Transaction.fromJson(json)).toList();
@@ -40,7 +40,7 @@ class WalletRepository {
   /// Fetch transactions by wallet ID
   Future<List<Transaction>> fetchWalletTransactions(String walletId) async {
     try {
-      final response = await _dio.get('/wallets/$walletId/transactions'); // Remplacez par votre endpoint
+      final response = await _dio.get('/wallets/$walletId/transactions'); // Endpoint correct
       if (response.statusCode == 200) {
         final List<dynamic> data = response.data as List<dynamic>;
         return data.map((json) => Transaction.fromJson(json)).toList();
@@ -55,7 +55,7 @@ class WalletRepository {
   /// Fetch wallets by user ID
   Future<List<Wallet>> fetchWalletsByUser(String userId) async {
     try {
-      final response = await _dio.get('/users/$userId/wallets'); // Remplacez par votre endpoint
+      final response = await _dio.get('/users/$userId/wallets'); // Endpoint correct
       if (response.statusCode == 200) {
         final List<dynamic> data = response.data as List<dynamic>;
         return data.map((json) => Wallet.fromJson(json)).toList();

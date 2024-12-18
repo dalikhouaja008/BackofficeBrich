@@ -8,7 +8,7 @@ import 'package:brichbackoffice/ui/wallet/walletViewModel.dart';
 import 'package:get/get.dart';
 import 'package:brichbackoffice/ui/signin/signinView.dart';
 import 'package:brichbackoffice/ui/signin/signinViewModel.dart'; // Importez le ViewModel
-import 'package:brichbackoffice/ui/wallet/walletsScreen.dart'; // Import Wallet Screen
+//import 'package:brichbackoffice/ui/wallet/walletsScreen.dart'; // Import Wallet Screen
 import 'package:brichbackoffice/data/repositories/WalletRepository.dart'; // Import Wallet Repository
 
 abstract class AppRoutes {
@@ -45,6 +45,7 @@ abstract class AppRoutes {
       page: () => const ConversionsScreen(),
     ),
 
+/*
     // Wallet Page (Updated to navigate properly)
     GetPage(
       name: walletPage,
@@ -52,7 +53,7 @@ abstract class AppRoutes {
       binding: BindingsBuilder(() {
         Get.lazyPut<WalletsViewModel>(() => WalletsViewModel(Get.find<WalletRepository>()));
       }),
-    ),
+    ),*/
 
 GetPage(
   name: usersPage, 

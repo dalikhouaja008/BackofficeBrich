@@ -99,24 +99,7 @@ class UsersPage extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            ElevatedButton.icon(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => UserWalletsPage(userId: user.id ?? ''),
-                                  ),
-                                );
-                              },
-                              icon: const Icon(Icons.account_balance_wallet),
-                              label: const Text('Wallets'),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.green,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                              ),
-                            ),
+                            
                           ],
                         ),
                       ],

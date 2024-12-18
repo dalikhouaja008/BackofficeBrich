@@ -12,13 +12,17 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await DependencyInjection.init();
 
+  final walletRepository = WalletRepository(Dio());
+
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => WalletsViewModel(WalletRepository(Dio())),
+          create: (_) => WalletsViewModel(walletRepository),
         ),
-        ChangeNotifierProvider(create: (_) => UserViewModel()),
+        ChangeNotifierProvider(
+          create: (_) => UserViewModel(walletRepository),
+        ),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
